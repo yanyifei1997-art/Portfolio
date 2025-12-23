@@ -2,14 +2,9 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  define: {
-    // 修复某些库寻找 process 变量导致的构建错误
-    'process.env': {},
-  },
   build: {
     rollupOptions: {
-      // 关键：将这些依赖标记为外部依赖，
-      // 这样 Vite 构建时就会跳过对它们的打包，直接使用 index.html 里的 importmap
+      // 强制将这些依赖设为 external，直接使用 index.html 中的 importmap
       external: [
         'react',
         'react-dom',
@@ -18,9 +13,11 @@ export default defineConfig({
         'lucide-react'
       ],
     },
+    // 生产环境输出目录，Vercel 默认识别 dist
+    outDir: 'dist',
   },
   optimizeDeps: {
-    // 确保开发环境下排除这些库以使用 CDN 版本
+    // 开发环境下也排除，保持开发与生产环境的一致性
     exclude: [
       'react',
       'react-dom',
