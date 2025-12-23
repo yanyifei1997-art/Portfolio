@@ -29,9 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            cursor: none !important;
-        }
+        * { cursor: none !important; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0a0a0a;
@@ -42,37 +40,24 @@
         .img-grayscale {
             filter: grayscale(100%);
             transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: filter;
         }
         .group:hover .img-grayscale {
             filter: grayscale(0%) !important;
         }
-        .pixel-bar {
-            image-rendering: pixelated;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
+        .pixel-bar { image-rendering: pixelated; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
         ::-webkit-scrollbar-thumb {
             background: #333;
             border-radius: 4px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00e5ff;
-        }
+        ::-webkit-scrollbar-thumb:hover { background: #00e5ff; }
         @keyframes pulse-slow {
             0%, 100% { opacity: 0.3; transform: translateY(0); }
             50% { opacity: 1; transform: translateY(10px); }
         }
-        .animate-pulse-slow {
-            animation: pulse-slow 2s infinite ease-in-out;
-        }
-        .break-inside-avoid {
-            break-inside: avoid;
-        }
+        .animate-pulse-slow { animation: pulse-slow 2s infinite ease-in-out; }
+        .break-inside-avoid { break-inside: avoid; }
     </style>
 
     <script type="importmap">
@@ -81,17 +66,18 @@
     "react": "https://esm.sh/react@19.0.0",
     "react-dom": "https://esm.sh/react-dom@19.0.0",
     "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "framer-motion": "https://esm.sh/framer-motion@12.0.0",
+    "framer-motion": "https://esm.sh/framer-motion@11.11.9",
     "lucide-react": "https://esm.sh/lucide-react@0.460.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "vite": "https://esm.sh/vite@^7.3.0"
   }
 }
 </script>
 </head>
 <body>
     <div id="root"></div>
-    <!-- 显式引入入口文件，确保在 Vercel 等静态托管环境下能触发执行 -->
+    <!-- Vite 构建时会自动处理这个路径，开发和生产均有效 -->
     <script type="module" src="./index.tsx"></script>
 </body>
 </html>
