@@ -6,12 +6,17 @@ import App from './App';
 const container = document.getElementById('root');
 
 if (!container) {
-  console.error("Failed to find the root element. Check your index.html.");
+  console.error("Critical Error: Root container not found in index.html");
 } else {
-  const root = createRoot(container);
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
+  try {
+    const root = createRoot(container);
+    root.render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+    console.log("YANIMATE Application initialized successfully.");
+  } catch (error) {
+    console.error("Failed to render React application:", error);
+  }
 }
